@@ -168,8 +168,7 @@ exports.loginCustomer = asyncHandler(async (req, res) => {
 
     res.cookie("Cutomer", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",    // localhost साठी
+        secure: true,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         path: "/",
     });
