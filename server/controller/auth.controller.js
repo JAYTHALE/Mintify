@@ -165,14 +165,13 @@ exports.loginCustomer = asyncHandler(async (req, res) => {
         process.env.JWT_KEY,
         { expiresIn: "7d" }
     );
-
     res.cookie("Cutomer", token, {
         httpOnly: true,
         secure: true,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
+        sameSite: "none",
+        maxAge: 24 * 60 * 60 * 1000,
         path: "/",
     });
-
     // 6️⃣ Send Response
     res.status(200).json({
         message: "Login Successful",
